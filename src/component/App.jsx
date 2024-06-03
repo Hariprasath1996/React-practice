@@ -1,12 +1,12 @@
 import React from 'react';
-import ProfileCard from './ProfileCard';
 
+// Data
 const UserData = [{
     name: "Hari",
     city: "Erode",
     description: "Front-End- Developer",
-    skills: ["HTML", "CSS", "JAVA-SCRIPT", "REACT", "EXCEL", "WEB-DEVELOPMENT","EXCEL"],
-    online: false,
+    skills: ["HTML", "CSS", "JAVA-SCRIPT", "REACT", "EXCEL", "WEB-DEVELOPMENT", "EXCEL"],
+    online: true,
     profile: "images"
 }, {
     name: "prasath",
@@ -16,49 +16,50 @@ const UserData = [{
     online: false,
     profile: "images"
 }, {
-    name: "viper",
+    name: "Randy",
     city: "coimbatore",
     description: "Back-End- Developer",
     skills: ["HTML", "CSS", "JAVA-SCRIPT", "REACT", "EXCEL", "WEB-DEVELOPMENT", "MERN-LANGUAGES"],
-    online: false,
+    online: true,
     profile: "images"
 }]
 
-// props
-function App() {
-    const User = {
-
-
-    }
+// blow codes refers ,  how can we create the profile card 
+function User(props) {
     return (
-        <><div>
-            <p>offline</p>
-            <img src="" alt="" />
-            <h2>name</h2>
-            <h3>city</h3>
-            <h2>description</h2>
-            <div>
-                <button>Message</button>
-                <button>Following</button>
+        <><div className='container'>
+            <span className= {props.online ? "online":"offline"}>{props.online?"ONLINE" :"OFFLINE"}</span>
+            <img src={props.profile} alt="" />
+            <h2 className='name'>{props.name}</h2>
+            <h3 className='city'>{props.city}</h3>
+            <h2 className='description'>{props.description}</h2>
+            <div className='btn-box'>
+                <button className='msg'>Message</button>
+                <button className='follow'>Following</button>
             </div>
-            <div>
-                <h2 >
+            <div className='skills'>
+                <h2 className='skill-header' >
                     skills
                 </h2>
-                <div>
+                <div className='list-items'>
                     <ul>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JAVA-SCRIPT</li>
-                        <li>REACT</li>
-                        <li>WEB-DEVELOPMENT</li>
-                        <li>EXCEL</li>
+                    {props.skills.map((skill,index)=>(<li key={index}>
+                        {skill}
+                    </li>
+                    ))}
                     </ul>
                 </div>
             </div>
         </div>
         </>
     )
+}
+
+// export component
+const App = () => {
+    return (
+        <User name="hari" city="erode" description=" Front-End Developer" skills={["HTML","CSS","JAVA-SCRIPT","REACT","WEB-DEVELOPMENT","EXCEL"]} online={true} profile="src/component/images/img.jpg"  />
+    );
 }
 
 export default App;

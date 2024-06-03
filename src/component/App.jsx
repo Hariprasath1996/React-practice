@@ -59,6 +59,7 @@ function User(props) {
 const UserCard = () => {
     return (
         <>
+        {/* create multi card using conditional rending method for user online/offline  and map method for create multiple cards */}
         {UserData.map((user,index)=>(
             <User key={index} name={user.name} city={user.city} description={user.description} skills={user.skills} online={user.online}   profile={user.profile}  />
     ))}
@@ -67,6 +68,9 @@ const UserCard = () => {
 }
 
 export default UserCard;
+
+
+
 // for singlr card create 
 //  <User name="hari" city="erode" description=" Front-End Developer" skills={["HTML","CSS","JAVA-SCRIPT","REACT","WEB-DEVELOPMENT","EXCEL"]} online={true} profile="src/component/images/img.jpg"  />
 
